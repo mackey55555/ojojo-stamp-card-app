@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap'); /* ロゴと似たフォントのインポート */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,7 +9,7 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: white) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
@@ -17,11 +18,15 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  
+  font-family: 'Montserrat', sans-serif; /* フォントを統一 */
+  background-color: #f5f5f5; /* 背景色を明るいグレーに */
+  color: #333; /* テキストカラーを濃いグレーに */
+/*   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
 }

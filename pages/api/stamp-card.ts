@@ -4,16 +4,30 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { lineId } = req.query as { lineId: string };
+  const { lineId } = req.query;
+
+  if (typeof lineId !== 'string') {
+    return res.status(400).json({ message: 'Invalid lineId' });
+  }
 
   try {
     const user = await prisma.user.findUnique({
       where: { lineId },
-      include: { stampCard: true }
+      include: {
+        stampCard: {
+          orderBy: { createdAt: 'desc' },
+        },
+      },
     });
-    res.status(200).json(user ? user.stampCard : []);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    return res.json(user.stampCard);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch stamp cards' });
+    console.error('Error fetching stamp cards:', error);
+    return res.status(500).json({ message: 'Internal server error', error: error.message });
   }
 };
 

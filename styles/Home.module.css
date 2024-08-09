@@ -1,0 +1,144 @@
+.stampCardWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.stampCardContainerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 20px;
+}
+
+.stampCardContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  width: 350px;
+  border: 2px solid #333;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+}
+
+.stampCardItem {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  position: relative;
+  color: #333;
+}
+
+.stampCardItem.stamped {
+  background-color: #fff;
+  background-image: url('/mystamp.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.stampNumber {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+}
+
+.button.left {
+  left: -40px;
+}
+
+.button.right {
+  right: -40px;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.addButton {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.addButton:hover {
+  background-color: #555;
+}
+
+.cardInfo {
+  position: absolute;
+  top: -20px;
+  left: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+.overlay.visible {
+  opacity: 1;
+}
+
+.loadingContent {
+  text-align: center;
+  color: white;
+}
+
+.stampImage {
+  width: 100px;
+  height: 100px;
+}
+
+.quote {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+}

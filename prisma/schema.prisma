@@ -12,6 +12,7 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model User {
   id        Int      @id @default(autoincrement())
   lineId    String   @unique
@@ -19,9 +20,9 @@ model User {
 }
 
 model StampCard {
-  id      Int     @id @default(autoincrement())
-  userId  Int
-  stamps  Int     @default(0)
-  createdAt DateTime @default(now())
-  user    User    @relation(fields: [userId], references: [id])
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  stamps     Int      @default(0)
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
 }
